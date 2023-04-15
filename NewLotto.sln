@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1231
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewLotto", "NewLotto\NewLotto.csproj", "{A09543DD-ABCD-42CA-AA9F-50C958CE6A05}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{472CEFCE-4157-48A9-981C-F2174F30D911}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A09543DD-ABCD-42CA-AA9F-50C958CE6A05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A09543DD-ABCD-42CA-AA9F-50C958CE6A05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A09543DD-ABCD-42CA-AA9F-50C958CE6A05}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A09543DD-ABCD-42CA-AA9F-50C958CE6A05}.Debug|x64.Build.0 = Debug|Any CPU
+		{A09543DD-ABCD-42CA-AA9F-50C958CE6A05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A09543DD-ABCD-42CA-AA9F-50C958CE6A05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A09543DD-ABCD-42CA-AA9F-50C958CE6A05}.Release|x64.ActiveCfg = Release|Any CPU
+		{A09543DD-ABCD-42CA-AA9F-50C958CE6A05}.Release|x64.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {472CFFFF-65E7-4918-980B-8A9C9897C901}
+	EndGlobalSection
+EndGlobal
