@@ -1,1 +1,0 @@
-﻿Server=localhost;Database=Lotto;User Id=lottouser;Password=NJSdhQynvNhKJ4;
