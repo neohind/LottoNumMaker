@@ -13,9 +13,9 @@ namespace NewLotto.Dac
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private AgentClientForMsSql m_agent = null;
 
-        public DacLotto()
+        public DacLotto(string sConnectionString)
         {
-            m_agent = new AgentClientForMsSql("Server=192.168.30.192;Database=Lotto;User Id=lottouser;Password=NJSdhQynvNhKJ4;");
+            m_agent = new AgentClientForMsSql(sConnectionString);
             //m_agent = new AgentClientForMsSql("Server=KNOIE;Database=Lotto;User Id=lottouser;Password=NJSdhQynvNhKJ4;");
         }
 
@@ -23,7 +23,25 @@ namespace NewLotto.Dac
         {
             if (aryBalls.Count == 7)
             {
-                UDataQuerySet set = new UDataQuerySet("SP_INSERT_NEWBALLS", System.Data.CommandType.StoredProcedure);
+                UDataQuerySet set = new UDataQuerySet(
+@"INSERT INTO [dbo].[TB_BALLRESULTS]
+           ([idx]
+           ,[b1]
+           ,[b2]
+           ,[b3]
+           ,[b4]
+           ,[b5]
+           ,[b6]
+           ,[b7])
+     VALUES
+           (@idx,
+			@b1,
+			@b2,
+			@b3,
+			@b4,
+			@b5,
+			@b6,
+			@b7)");
                 set.AddParam("@idx", nIndex);
                 for (int i = 0; i < 7; i++)
                 {
@@ -56,7 +74,11 @@ namespace NewLotto.Dac
         {
             try
             {
-                UDataQuerySet set = new UDataQuerySet("SP_SELECT_CHECK_EXIST_INDEX", System.Data.CommandType.StoredProcedure);
+                UDataQuerySet set = new UDataQuerySet(
+ @"IF (SELECT TOP 1 idx FROM TB_BALLRESULTS WHERE idx = @idx) = @idx
+		SELECT 'Y'
+	ELSE
+		SELECT 'N'");
                 set.AddParam("@idx", nIndex);
                 string sResult = m_agent.GetValue<string>(set);
 
@@ -259,7 +281,19 @@ namespace NewLotto.Dac
 
         public ModelCalcResults GetCalcResult()
         {
-            UDataQuerySet set = new UDataQuerySet("SP_SELECT_CALC_AVG");
+            UDataQuerySet set = new UDataQuerySet(
+@"DECLARE @avg real
+DECLARE @stdev real
+DECLARE @summaryAvg real
+DECLARE @summaryStdev real
+
+SET @summaryAvg = (SELECT AVG(summary) FROM [TB_ANALY_CALC])
+SET @summaryStdev = (SELECT STDEV(summary) FROM [TB_ANALY_CALC])
+SET @avg = (SELECT AVG(average) FROM [TB_ANALY_CALC])
+SET @stdev = (SELECT STDEV(average) FROM [TB_ANALY_CALC])
+
+SELECT @summaryAvg as sumavg, @summaryStdev as sumstd, @avg as avg, @stdev as stdev");
+            set.CmdType = CommandType.Text;
             ModelCalcResults result = null;
             DataTable tbResult = null;
 

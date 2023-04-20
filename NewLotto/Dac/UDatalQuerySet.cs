@@ -194,7 +194,7 @@ namespace NewLotto.Dac
         {
             this.Parameters = new Dictionary<string, ParamterInfo>();
             this.OutParameters = new Dictionary<string, ParamterInfo>();
-            CmdType = CommandType.StoredProcedure; 
+            CmdType = CommandType.Text; 
             Timeout = 30;
         }
 

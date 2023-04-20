@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 using System.Text;
@@ -11,7 +12,18 @@ namespace NewLotto
     {
         static void Main(string[] args)
         {
-            AppMain app = new AppMain();
+            string sConnectionString = string.Empty;
+
+            if (File.Exists("ConnectionString.txt"))
+            {
+                using (StreamReader reader = File.OpenText("ConnectionString.txt"))
+                {
+                    sConnectionString = reader.ReadToEnd();
+                }
+            }
+
+
+            AppMain app = new AppMain(sConnectionString);
 
 
             List<byte[]> aryAllPatterns = app.GetAllPatterns();

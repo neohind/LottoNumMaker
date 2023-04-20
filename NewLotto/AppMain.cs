@@ -16,18 +16,16 @@ namespace NewLotto
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        
-
         private Regex m_regex = null;
         private DacLotto m_dac = null;
         private List<ModelBallInfo> m_aryAllBalls = new List<ModelBallInfo>();
         private int m_nLastIndex = 0;
         private Dictionary<int, List<ModelBallInfo>> m_dicContainBalls = new Dictionary<int, List<ModelBallInfo>>();
 
-        public AppMain()
+        public AppMain(string sConnectionString)
         {
             m_regex = new Regex("\\<span class=\"ball_645 lrg ball[0-9]\"\\>(?<num>[0-9]+)");
-            m_dac = new DacLotto();
+            m_dac = new DacLotto(sConnectionString);
 
             DateTime dtBaseDate = new DateTime(2002, 12, 7);
             m_nLastIndex = Convert.ToInt32((DateTime.Now - dtBaseDate).TotalDays / 7);
@@ -64,7 +62,8 @@ namespace NewLotto
 
         public List<byte> GenerateNumbers()
         {
-            Random rnd = new Random(Guid.NewGuid().GetHashCode());
+            int nSeed = (int)(DateTime.Now.Ticks);
+            Random rnd = new Random(nSeed);
 
             List<byte> aryResult = new List<byte>();
             ModelCalcResults calcData = m_dac.GetCalcResult();
@@ -87,8 +86,10 @@ namespace NewLotto
                 double nAvg = nSum / 6.0;
 
 
-                bIsFound = (nSum > (calcData.SummaryAvg - calcData.SummaryStdDev) && nSum < (calcData.SummaryAvg + calcData.SummaryStdDev))
-                            && (nAvg > (calcData.Average - calcData.AverageStdDev) && nAvg < (calcData.Average + calcData.AverageStdDev));
+                bIsFound = (nSum > (calcData.SummaryAvg - calcData.SummaryStdDev) 
+                            && nSum < (calcData.SummaryAvg + calcData.SummaryStdDev))
+                            && (nAvg > (calcData.Average - calcData.AverageStdDev) 
+                            && nAvg < (calcData.Average + calcData.AverageStdDev));
 
                 bIsFound = bIsFound && m_dac.CheckAlreadyExistBallSet(aryResult);
 
@@ -204,8 +205,7 @@ namespace NewLotto
             byte nBall1 = (byte)aryParams[1];
 
             DateTime dtBase = DateTime.Now;
-            long nAllCount = 0;
-            long nInsertedCount = 0;
+            long nAllCount = 0;            
             
             List<byte[]> aryTempBallPatterns = new List<byte[]>();
 

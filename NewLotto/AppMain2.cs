@@ -22,10 +22,10 @@ namespace NewLotto
         private int m_nLastIndex = 0;
         private Dictionary<int, List<ModelBallInfo>> m_dicContainBalls = new Dictionary<int, List<ModelBallInfo>>();
 
-        public AppMain2()
+        public AppMain2(string sConnectionString)
         {
             m_regex = new Regex("\\<span class=\"ball_645 lrg ball[0-9]\"\\>(?<num>[0-9]+)");
-            m_dac = new DacLotto();
+            m_dac = new DacLotto(sConnectionString);
 
             DateTime dtBaseDate = new DateTime(2002, 12, 7);
             m_nLastIndex = Convert.ToInt32((DateTime.Now - dtBaseDate).TotalDays / 7);
