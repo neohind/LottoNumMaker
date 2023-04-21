@@ -34,7 +34,7 @@ namespace NewLotto
 
 
 
-            // app.LoadBalls();
+            app.LoadBalls();
 
             // app.AnalysisCountLevel();
 

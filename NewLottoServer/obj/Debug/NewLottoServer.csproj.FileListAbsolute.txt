@@ -1,0 +1,11 @@
+D:\Works\90.PrivateProjects\Lotto\LottoNumMaker\NewLottoServer\bin\Debug\NewLottoServer.exe.config
+D:\Works\90.PrivateProjects\Lotto\LottoNumMaker\NewLottoServer\bin\Debug\NewLottoServer.exe
+D:\Works\90.PrivateProjects\Lotto\LottoNumMaker\NewLottoServer\bin\Debug\NewLottoServer.pdb
+D:\Works\90.PrivateProjects\Lotto\LottoNumMaker\NewLottoServer\bin\Debug\MQTTnet.dll
+D:\Works\90.PrivateProjects\Lotto\LottoNumMaker\NewLottoServer\bin\Debug\MQTTnet.xml
+D:\Works\90.PrivateProjects\Lotto\LottoNumMaker\NewLottoServer\obj\Debug\NewLottoServer.csproj.AssemblyReference.cache
+D:\Works\90.PrivateProjects\Lotto\LottoNumMaker\NewLottoServer\obj\Debug\NewLottoServer.csproj.SuggestedBindingRedirects.cache
+D:\Works\90.PrivateProjects\Lotto\LottoNumMaker\NewLottoServer\obj\Debug\NewLottoServer.csproj.CoreCompileInputs.cache
+D:\Works\90.PrivateProjects\Lotto\LottoNumMaker\NewLottoServer\obj\Debug\NewLottoServer.csproj.CopyComplete
+D:\Works\90.PrivateProjects\Lotto\LottoNumMaker\NewLottoServer\obj\Debug\NewLottoServer.exe
+D:\Works\90.PrivateProjects\Lotto\LottoNumMaker\NewLottoServer\obj\Debug\NewLottoServer.pdb

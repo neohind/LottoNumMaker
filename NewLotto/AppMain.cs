@@ -88,7 +88,7 @@ namespace NewLotto
 
                 bIsFound = (nSum > (calcData.SummaryAvg - calcData.SummaryStdDev) 
                             && nSum < (calcData.SummaryAvg + calcData.SummaryStdDev))
-                            && (nAvg > (calcData.Average - calcData.AverageStdDev) 
+                            || (nAvg > (calcData.Average - calcData.AverageStdDev) 
                             && nAvg < (calcData.Average + calcData.AverageStdDev));
 
                 bIsFound = bIsFound && m_dac.CheckAlreadyExistBallSet(aryResult);

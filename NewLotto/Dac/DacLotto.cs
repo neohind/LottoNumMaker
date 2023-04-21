@@ -181,7 +181,7 @@ namespace NewLotto.Dac
 	                    Group BY 
 		                    b1, b2, b3, b4, b5, b6) as src
                     WHERE 
-	                    cnt > 1", CommandType.Text);
+	                    cnt > 1");
             DataTable tbResults = null;
             try
             {
@@ -212,7 +212,7 @@ namespace NewLotto.Dac
         public List<byte[]> GetAllBallPatterns()
         {
             List<byte[]> aryResults = new List<byte[]>();
-            UDataQuerySet set = new UDataQuerySet("SELECT MAX(seqid) FROM TB_ANALY_CNT WHERE lvl=6", CommandType.Text);
+            UDataQuerySet set = new UDataQuerySet("SELECT MAX(seqid) FROM TB_ANALY_CNT WHERE lvl=6");
             long nAllCount = 0;
             try
             {
@@ -230,7 +230,8 @@ namespace NewLotto.Dac
 
                 while(nCurIndex <= nAllCount)
                 {
-                    UDataQuerySet setData = new UDataQuerySet("SELECT lvl, b1, b2, b3, b4, b5, b6 FROM TB_ANALY_CNT WITH (NOLOCK) WHERE lvl=6 AND (seqid > @r1 and seqid <= @r2)", CommandType.Text);
+                    UDataQuerySet setData
+                        = new UDataQuerySet("SELECT lvl, b1, b2, b3, b4, b5, b6 FROM TB_ANALY_CNT WITH (NOLOCK) WHERE lvl=6 AND (seqid > @r1 and seqid <= @r2)");
                     setData.AddParam("@r1", nCurIndex);
                     nCurIndex = nCurIndex + 50000 * nBulkIndex;
                     setData.AddParam("@r2", nCurIndex);
